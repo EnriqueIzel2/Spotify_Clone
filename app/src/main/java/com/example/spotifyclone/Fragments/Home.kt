@@ -17,6 +17,10 @@ class Home : Fragment() {
     return inflater.inflate(R.layout.fragment_home, container, false)
   }
 
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+  }
+
   companion object {
 
     @JvmStatic
