@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spotifyclone.R
+import com.example.spotifyclone.databinding.AlbumItemBinding
 import com.example.spotifyclone.databinding.CategoriaItemBinding
 import com.example.spotifyclone.databinding.FragmentHomeBinding
+import com.example.spotifyclone.model.Album
 import com.example.spotifyclone.model.Categoria
 
 class Home : Fragment(R.layout.fragment_home) {
@@ -40,6 +42,14 @@ class Home : Fragment(R.layout.fragment_home) {
       val categoria = Categoria()
       categoria.titulo = "Categoria $c"
 
+      val albuns: MutableList<Album> = ArrayList()
+      for (i in 1..10) {
+        val album = Album()
+        album.album = R.drawable.spotify
+        albuns.add(album)
+      }
+
+      categoria.albuns = albuns
       categorias.add(categoria)
     }
 
@@ -73,6 +83,32 @@ class Home : Fragment(R.layout.fragment_home) {
 
     fun bind(categoria: Categoria) {
       itemTitulo.text = categoria.titulo
+      recyclerAlbuns.adapter = AlbumAdapter(categoria.albuns)
+      recyclerAlbuns.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+    }
+  }
+
+  private inner class AlbumAdapter(private val albuns: MutableList<Album>) : RecyclerView.Adapter<AlbunsHolder>() {
+    private lateinit var binding: AlbumItemBinding
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbunsHolder {
+      binding = AlbumItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+      return AlbunsHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: AlbunsHolder, position: Int) {
+      val album = albuns[position]
+      holder.bind(album)
+    }
+
+    override fun getItemCount(): Int = albuns.size
+  }
+
+  private inner class AlbunsHolder(binding: AlbumItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    private val albumItemImage = binding.albumItemImage
+
+    fun bind(album: Album) {
+      albumItemImage.setImageResource(album.album)
     }
   }
 }
