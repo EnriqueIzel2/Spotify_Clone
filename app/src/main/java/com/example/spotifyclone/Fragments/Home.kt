@@ -45,7 +45,7 @@ class Home : Fragment(R.layout.fragment_home) {
       val albuns: MutableList<Album> = ArrayList()
       for (i in 1..10) {
         val album = Album()
-        album.album = R.drawable.spotify
+//        album.album = R.drawable.spotify
         albuns.add(album)
       }
 
@@ -108,7 +108,7 @@ class Home : Fragment(R.layout.fragment_home) {
     private val albumItemImage = binding.albumItemImage
 
     fun bind(album: Album) {
-      albumItemImage.setImageResource(album.album)
+//      albumItemImage.setImageResource(album.album)
     }
   }
 }
