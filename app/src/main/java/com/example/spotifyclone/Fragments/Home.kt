@@ -88,7 +88,7 @@ class Home : Fragment(R.layout.fragment_home) {
     }
   }
 
-  private inner class AlbumAdapter(private val albuns: MutableList<Album>) : RecyclerView.Adapter<AlbunsHolder>() {
+  private inner class AlbumAdapter(private val albuns: List<Album>) : RecyclerView.Adapter<AlbunsHolder>() {
     private lateinit var binding: AlbumItemBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbunsHolder {
