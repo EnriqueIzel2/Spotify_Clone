@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
-import com.example.spotifyclone.Fragments.Biblioteca
-import com.example.spotifyclone.Fragments.Buscar
-import com.example.spotifyclone.Fragments.Home
+import com.example.spotifyclone.fragments.Biblioteca
+import com.example.spotifyclone.fragments.Buscar
+import com.example.spotifyclone.fragments.Home
 import com.example.spotifyclone.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
