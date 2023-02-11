@@ -5,14 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spotifyclone.R
 import com.example.spotifyclone.databinding.AlbumItemBinding
 import com.example.spotifyclone.databinding.CategoriaItemBinding
 import com.example.spotifyclone.databinding.FragmentHomeBinding
-import com.example.spotifyclone.model.Album
-import com.example.spotifyclone.model.Categoria
+import com.example.spotifyclone.model.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class Home : Fragment(R.layout.fragment_home) {
 
@@ -36,30 +39,32 @@ class Home : Fragment(R.layout.fragment_home) {
     val bindingHome = FragmentHomeBinding.bind(view)
     fragmentHome = bindingHome
     val recyclerViewCategorias = bindingHome.recyclerViewCategorias
-
-    val categorias: MutableList<Categoria> = ArrayList()
-    for (c in 1..5) {
-      val categoria = Categoria()
-      categoria.titulo = "Categoria $c"
-
-      val albuns: MutableList<Album> = ArrayList()
-      for (i in 1..10) {
-        val album = Album()
-//        album.album = R.drawable.spotify
-        albuns.add(album)
-      }
-
-      categoria.albuns = albuns
-      categorias.add(categoria)
-    }
+    val categorias = arrayListOf<Categoria>()
 
     categoriaAdapter = CategoriaAdapter(categorias)
     recyclerViewCategorias.adapter = categoriaAdapter
     recyclerViewCategorias.layoutManager = LinearLayoutManager(context)
 
+    initRetrofit().create(SpotifyAPI::class.java)
+      .getCategorias()
+      .enqueue(object : Callback<Categorias> {
+        override fun onResponse(call: Call<Categorias>, response: Response<Categorias>) {
+          if (response.isSuccessful) {
+            response.body()?.let {
+              categoriaAdapter.categorias.clear()
+              categoriaAdapter.categorias.addAll(it.categorias)
+              categoriaAdapter.notifyDataSetChanged()
+            }
+          }
+        }
+
+        override fun onFailure(call: Call<Categorias>, t: Throwable) {
+          Toast.makeText(context, "Erro ao acessar api", Toast.LENGTH_SHORT).show()
+        }
+      })
   }
 
-  private inner class CategoriaAdapter(private val categorias: MutableList<Categoria>) :
+  private inner class CategoriaAdapter(val categorias: MutableList<Categoria>) :
     RecyclerView.Adapter<CategoriaHolder>() {
 
     private lateinit var binding: CategoriaItemBinding
