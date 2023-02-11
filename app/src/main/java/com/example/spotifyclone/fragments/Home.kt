@@ -1,11 +1,11 @@
-package com.example.spotifyclone.Fragments
+package com.example.spotifyclone.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spotifyclone.R
@@ -13,6 +13,7 @@ import com.example.spotifyclone.databinding.AlbumItemBinding
 import com.example.spotifyclone.databinding.CategoriaItemBinding
 import com.example.spotifyclone.databinding.FragmentHomeBinding
 import com.example.spotifyclone.model.*
+import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -59,7 +60,7 @@ class Home : Fragment(R.layout.fragment_home) {
         }
 
         override fun onFailure(call: Call<Categorias>, t: Throwable) {
-          Toast.makeText(context, "Erro ao acessar api", Toast.LENGTH_SHORT).show()
+          Log.i("Home", "onFailure: falhou a requisição")
         }
       })
   }
@@ -113,7 +114,7 @@ class Home : Fragment(R.layout.fragment_home) {
     private val albumItemImage = binding.albumItemImage
 
     fun bind(album: Album) {
-//      albumItemImage.setImageResource(album.album)
+      Picasso.get().load(album.url_imagem).placeholder(R.drawable.placeholder).fit().into(albumItemImage)
     }
   }
 }
