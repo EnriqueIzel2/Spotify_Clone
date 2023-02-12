@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
 
   private lateinit var binding: ActivityMainBinding
   private var content: FrameLayout? = null
+
   private var mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
     when (item.itemId) {
       R.id.menu_item_inicio -> {
@@ -44,6 +45,9 @@ class MainActivity : AppCompatActivity() {
 
     content = binding.mainContent
     binding.bottomNavMenu.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+    val fragment = Home.newInstance()
+    addFragment(fragment)
   }
 
   private fun addFragment(fragment: Fragment) {
