@@ -22,13 +22,30 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.SearchView
+        android:id="@+id/fragment_buscar_searchView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="20dp"
-        android:background="@color/white"
+        android:background="@drawable/background_search_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fragment_buscar_title" />
+
+    <TextView
+        android:id="@+id/fragment_buscar_subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Navegue por todas as seções"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_buscar_searchView" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
