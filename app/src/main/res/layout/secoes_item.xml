@@ -16,7 +16,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/secoes_item_contentDescription" />
 
     <TextView
         android:id="@+id/secoes_item_title"
@@ -25,7 +26,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="50dp"
-        android:text="Paradas"
+        android:text="@string/secoes_item_title"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
