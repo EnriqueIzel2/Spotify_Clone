@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Spotify Clone</string>
+
+    <string name="albuns_title">Seus álbuns aparecerão aqui</string>
+
+    <string name="playlists_title">Crie sua primeira playlist</string>
+    <string name="playlists_subtitle">É fácil, vamos te ajudar.</string>
+    <string name="playlists_button">Criar playlist</string>
+
+    <string name="artistas_title">Seus artistas aparecerão aqui</string>
+    <string name="artistas_subtitle">Agora, você pode adicionar alguns dos seus artistas favoritos.</string>
+    <string name="artistas_button">Adicionar Artistas</string>
+
+    <string name="buscar_title">Buscar</string>
+    <string name="buscar_subtitle">Navegue por todas as seções</string>
+
+    <string name="secoes_item_title">Paradas</string>
+    <string name="secoes_item_contentDescription">card image</string>
+
+    <string name="album_item_contentDescription">album image</string>
+    <string name="categoria_item_title">Paradas</string>
 </resources>
