@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="200dp"
         android:gravity="center"
         android:text="Crie sua primeira playlist"
         android:textColor="@color/white"
@@ -29,9 +29,25 @@
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="É fácil, vamos te ajudar."
-        android:textColor="@color/white"
+        android:textColor="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="@id/playlists_title"
         app:layout_constraintStart_toStartOf="@id/playlists_title"
         app:layout_constraintTop_toBottomOf="@id/playlists_title" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/playlists_button_criar_playlist"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/white"
+        android:text="Criar playlist"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/playlists_subtitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
