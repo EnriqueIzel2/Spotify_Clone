@@ -1,5 +1,6 @@
 package com.example.spotifyclone.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.spotifyclone.DetalhesActivity
 import com.example.spotifyclone.R
 import com.example.spotifyclone.databinding.AlbumItemBinding
 import com.example.spotifyclone.databinding.CategoriaItemBinding
@@ -89,17 +91,21 @@ class Home : Fragment(R.layout.fragment_home) {
 
     fun bind(categoria: Categoria) {
       itemTitulo.text = categoria.titulo
-      recyclerAlbuns.adapter = AlbumAdapter(categoria.albuns)
+      recyclerAlbuns.adapter = AlbumAdapter(categoria.albuns) { album ->
+        val intent = Intent(context, DetalhesActivity::class.java)
+        startActivity(intent)
+      }
       recyclerAlbuns.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
     }
   }
 
-  private inner class AlbumAdapter(private val albuns: List<Album>) : RecyclerView.Adapter<AlbunsHolder>() {
+  private inner class AlbumAdapter(private val albuns: List<Album>, private val listener: ((Album) -> Unit)?) :
+    RecyclerView.Adapter<AlbunsHolder>() {
     private lateinit var binding: AlbumItemBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbunsHolder {
       binding = AlbumItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-      return AlbunsHolder(binding)
+      return AlbunsHolder(binding, listener)
     }
 
     override fun onBindViewHolder(holder: AlbunsHolder, position: Int) {
@@ -110,11 +116,15 @@ class Home : Fragment(R.layout.fragment_home) {
     override fun getItemCount(): Int = albuns.size
   }
 
-  private inner class AlbunsHolder(binding: AlbumItemBinding) : RecyclerView.ViewHolder(binding.root) {
+  private inner class AlbunsHolder(binding: AlbumItemBinding, val onClick: ((Album) -> Unit)?) :
+    RecyclerView.ViewHolder(binding.root) {
     private val albumItemImage = binding.albumItemImage
 
     fun bind(album: Album) {
       Picasso.get().load(album.url_imagem).placeholder(R.drawable.placeholder).fit().into(albumItemImage)
+      albumItemImage.setOnClickListener {
+        onClick?.invoke(album)
+      }
     }
   }
 }
