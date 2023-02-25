@@ -19,4 +19,8 @@
 
     <string name="album_item_contentDescription">album image</string>
     <string name="categoria_item_title">Paradas</string>
+
+    <string name="activity_detalhes_title">As 50 mais tocadas do Brasil</string>
+    <string name="activity_detalhes_image_description">Capa do álbum</string>
+    <string name="activity_detalhes_button_play">Play</string>
 </resources>
