@@ -1,11 +1,18 @@
 package com.example.spotifyclone
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.spotifyclone.databinding.ActivityDetalhesBinding
 
 class DetalhesActivity : AppCompatActivity() {
+
+  lateinit var binding: ActivityDetalhesBinding
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_detalhes)
+    binding = ActivityDetalhesBinding.inflate(layoutInflater)
+    setContentView(binding.root)
+
+    binding.toolbar.navigationIcon = getDrawable(R.drawable.ic_arrow_back)
   }
 }
