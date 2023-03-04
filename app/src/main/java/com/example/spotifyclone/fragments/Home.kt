@@ -94,6 +94,7 @@ class Home : Fragment(R.layout.fragment_home) {
       recyclerAlbuns.adapter = AlbumAdapter(categoria.albuns) { album ->
         val intent = Intent(context, DetalhesActivity::class.java)
         intent.putExtra("album", album.url_imagem)
+        intent.putExtra("titulo", titulos[album.id])
         startActivity(intent)
       }
       recyclerAlbuns.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
