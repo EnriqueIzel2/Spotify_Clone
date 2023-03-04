@@ -9,7 +9,8 @@ data class Categoria(
 )
 
 data class Album(
-  @SerializedName("url_imagem") var url_imagem: String = ""
+  @SerializedName("url_imagem") var url_imagem: String = "",
+  @SerializedName("id") var id: Int = 0
 )
 
 data class Categorias(
