@@ -26,7 +26,7 @@ class DetalhesActivity : AppCompatActivity() {
     initComponentsID()
 
     intent.extras?.let {
-      val album = it.getInt("album")
+      val album = it.getString("album")
       Picasso.get().load(album).into(detalhesImage)
     }
 
