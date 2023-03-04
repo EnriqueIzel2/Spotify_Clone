@@ -27,7 +27,10 @@ class DetalhesActivity : AppCompatActivity() {
 
     intent.extras?.let {
       val album = it.getString("album")
+      val titulo = it.getString("titulo")
+
       Picasso.get().load(album).into(detalhesImage)
+      title.text = titulo
     }
 
     window.statusBarColor = Color.LTGRAY
