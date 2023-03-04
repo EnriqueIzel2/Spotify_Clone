@@ -1,6 +1,6 @@
 package com.example.spotifyclone.model
 
-var titulos = arrayOf(
+val titulos = arrayOf(
   "",
   "As 50 mais tocadas no Brasil",
   "As 50 mais tocadas no mundo",
